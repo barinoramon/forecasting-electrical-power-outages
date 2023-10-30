@@ -1,12 +1,13 @@
 import mysql.connector
+from configs.configs import db_host, db_username, db_password
 
 
 class SqlConnector:
     def __init__(self):
         self.connector = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            passwd="youtube2000",
+            host=db_host,
+            user=db_username,
+            passwd=db_password,
         )
         self.cursor = self.connector.cursor()
     
