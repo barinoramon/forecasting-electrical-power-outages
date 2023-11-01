@@ -8,7 +8,7 @@ class IngestorPipeline(Pipeline):
         super().__init__()
         self.data_lake = DataLake()
         self.data_source = {
-            'power_outages': self.data_lake.get_directory("raw/power_outages")
+            'power_outages': self.data_lake.get_directory("raw\power_outages")
         }
     def ingest_power_outages_data(self):
         #try:

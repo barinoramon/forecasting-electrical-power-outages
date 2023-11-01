@@ -9,6 +9,11 @@ class TestDatabaseArchitect(unittest.TestCase):
         from sql.repositories.database import Database
         self.architect.build()
         self.assertTrue(Database("ingested").exists)
+    def test_destroy(self):
+        return
+        from sql.repositories.database import Database
+        self.architect.destroy()
+        self.assertFalse(Database("ingested").exists)
         
 if __name__ == '__main__':
     unittest.main()

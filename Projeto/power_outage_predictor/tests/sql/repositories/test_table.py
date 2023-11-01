@@ -2,10 +2,10 @@ import unittest
 import pandas as pd
 from sql.repositories.database import Database
 
+
 class TestTable(unittest.TestCase):
     def setUp(self):
         self.database = Database('test')
-        
         if not self.database.exists:
             self.database.create()
         
@@ -32,7 +32,7 @@ class TestTable(unittest.TestCase):
     
     def tearDown(self):
         self.table.delete()
+        self.database.delete()
 
 if __name__ == '__main__':
     unittest.main()
-    

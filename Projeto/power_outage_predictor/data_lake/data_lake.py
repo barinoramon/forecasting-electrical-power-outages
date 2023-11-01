@@ -2,12 +2,13 @@ import sys
 import os
 from data_lake.file import File
 from collections import namedtuple
+from configs.configs import Config
 from data_lake.directory import Directory
 
 
 class DataLake:
     #data_lake_path = r"D:\Documentos\UFF\TCC\Projeto\Data Lake" PROD
-    data_lake_path = r"D:\Documentos\UFF\TCC\Projeto\Test Data Lake"
+    data_lake_path = Config().paths['data_lake']
     
     def __init__(self):
         pass

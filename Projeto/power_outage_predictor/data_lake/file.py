@@ -9,6 +9,6 @@ class File:
         
     def read(self):
         if self.format=='.csv':
-            return pd.read_csv(self.path)
+            return pd.read_csv(self.path, encoding='mac_roman')
         elif self.format=='.xlsx':
             return pd.read_excel(self.path)

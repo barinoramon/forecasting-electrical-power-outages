@@ -1,6 +1,7 @@
+from general.singleton.singleton import SingletonMeta
 from sql.repositories.database import Database, Table
 
-class DatabaseConstructor:
+class DatabaseConstructor(metaclass=SingletonMeta):
     def __init__(self):
         self.databases_structure = None
     
@@ -16,6 +17,11 @@ class DatabaseConstructor:
             database.create()
         return database.exists
     
+    def _delete_database(self, database_name:str):
+        database = Database(database_name)
+        if database.exists:
+            database.delete()
+    
     def _create_table(self, database_name:str, table_setting:dict):
         database = Database(database_name)
         database.use()
@@ -23,6 +29,14 @@ class DatabaseConstructor:
         if not table.exists:
             table.create(table_setting["columns"])
         return table.exists
+    
+    def _delete_table(self, database_name:str, table_name:str):
+        database = Database(database_name)
+        database.use()
+        table = Table(database=database, name=table_name)
+        if table.exists:
+            table.delete()
+    
     def _create_database_tables(self, database_name:str, tables_settings:dict):
         for table_setting in tables_settings:
             table_was_created = self._create_table(database_name, table_setting)
@@ -43,4 +57,8 @@ class DatabaseConstructor:
                 self._create_database_tables(database_name, tables_settings)
             else:
                 print(f'Failed to create database {database_name}.')
+                
+    def destroy(self):
+        for database_name,_ in self.databases_structure.items():
+            self._delete_database(database_name)
             

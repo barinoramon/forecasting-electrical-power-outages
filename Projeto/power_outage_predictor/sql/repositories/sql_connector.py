@@ -1,13 +1,15 @@
 import mysql.connector
-from configs.configs import db_host, db_username, db_password
+from configs.configs import Config
+from general.singleton.singleton import SingletonMeta
 
 
-class SqlConnector:
+class SqlConnector(metaclass=SingletonMeta):
     def __init__(self):
+        config = Config()
         self.connector = mysql.connector.connect(
-            host=db_host,
-            user=db_username,
-            passwd=db_password,
+            host=config.sql_params['HOST'],
+            user=config.sql_params['USERNAME'],
+            passwd=config.sql_params['PASSWORD'],
         )
         self.cursor = self.connector.cursor()
     
