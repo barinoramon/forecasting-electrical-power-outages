@@ -6,6 +6,7 @@ class TestDatabaseArchitect(unittest.TestCase):
         self.architect = DatabaseArchitect()
         self.architect.define_project()
     def test_build(self):
+        #return
         from sql.repositories.database import Database
         self.architect.build()
         self.assertTrue(Database("ingested").exists)

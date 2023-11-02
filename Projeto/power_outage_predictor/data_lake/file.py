@@ -7,8 +7,13 @@ class File:
         self.path = path
         self.name, self.format = os.path.splitext(self.path)
         
+    def read_csv(self, delimiter=',', encoding='utf-8', encoding_errors='strict'):
+        return pd.read_csv(self.path, delimiter=delimiter, encoding=encoding, encoding_errors=encoding_errors)
+    
+    def read_excel(self):
+        return pd.read_excel(self.path)
     def read(self):
         if self.format=='.csv':
-            return pd.read_csv(self.path, encoding='mac_roman')
+            return pd.read_csv(self.path, delimiter=';')
         elif self.format=='.xlsx':
             return pd.read_excel(self.path)

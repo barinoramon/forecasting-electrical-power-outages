@@ -8,7 +8,7 @@ from data_lake.directory import Directory
 
 class DataLake:
     #data_lake_path = r"D:\Documentos\UFF\TCC\Projeto\Data Lake" PROD
-    data_lake_path = Config().paths['data_lake']
+    data_lake_path = Config().paths['test_data_lake']
     
     def __init__(self):
         pass

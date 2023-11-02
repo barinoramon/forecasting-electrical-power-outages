@@ -15,10 +15,31 @@ class DataFormatter:
             return self.data.remove_columns(self.columns_to_be_removed)
     def apply_schema(self):
         dataframe = self.data.get_dataframe()
-        for column, tipo in self.columns_schema.items():
+        for column, column_type in self.columns_schema.items():
             if column in dataframe.columns:
-                dataframe[column] = dataframe[column].astype(tipo)
+                if column_type == float:
+                    dataframe[column] = self._convert_column_to_float(dataframe, column)
+                elif column_type == int:
+                    dataframe[column] = self._convert_column_to_int(dataframe, column)
+                elif column_type in [str]:
+                    dataframe[column] = self._convert_column_to_string(dataframe, column)
         return dataframe
+    
+    def _convert_column_to_float(self, dataframe, column):
+        dataframe = self.data.get_dataframe()
+        dataframe[column] = dataframe[column].astype(str).replace(',', '.')
+        dataframe[column] = dataframe[column].fillna(0).astype(float)
+        return dataframe[column]
+    
+    def _convert_column_to_int(self, dataframe, column):
+        dataframe[column] = dataframe[column].astype(str).replace(',', '.').astype(float).round().fillna(0).astype(int)
+        return dataframe[column]
+            
+    def _convert_column_to_string(self, dataframe, column):
+        dataframe[column] = dataframe[column].fillna("").astype(str)
+        return dataframe[column]
+
+
     def get(self):
         return self.data.get_dataframe()
     
