@@ -1,0 +1,8 @@
+
+mysql-connector
+mysql-connector-python
+mysql-connector-python-rf
+numpy
+pandas
+openpyxl
+singleton-decorator

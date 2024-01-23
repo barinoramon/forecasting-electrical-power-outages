@@ -1,0 +1,49 @@
+{
+  "databases_architecture": {
+    "ingested": [
+      {
+        "name": "power_outages",
+        "columns": [
+          ["conjunto_eletrico", "varchar(255)"],
+          ["tipo_interrupcao", "varchar(255)"],
+          ["data_inicio", "varchar(255)"],
+          ["data_fim", "varchar(255)"],
+          ["causa", "varchar(255)"],
+          ["n_consumidor_conjunto", "varchar(255)"]
+        ]
+      },
+      {
+        "name": "consumer_units",
+        "columns": [
+          ["id_conjunto_eletrico", "numeric(10)"],
+          ["conjunto_eletrico", "varchar(255)"],
+          ["indicador", "varchar(255)"],
+          ["ano", "varchar(4)"],
+          ["mes", "NUMERIC(4)"],
+          ["valor", "NUMERIC(18,2)"]
+        ]
+      },
+      {
+        "name": "weather_stations",
+        "columns": [
+          ["codigo_estacao", "varchar(255)"],
+          ["nome_estacao", "varchar(255)"],
+          ["latitude", "NUMERIC(9,6)"],
+          ["longitude", "NUMERIC(9,6)"]
+        ]
+      },
+      {
+        "name": "weather_measurements",
+        "columns": [
+          ["codigo_estacao", "varchar(255)"],
+          ["data_medicao", "varchar(10)"],
+          ["temperatura_media", "NUMERIC(10,6)"],
+          ["velocidade_maxima_vento", "NUMERIC(10,6)"],
+          ["velocidade_media_vento", "NUMERIC(10,6)"],
+          ["precipitacao_total", "NUMERIC(10,6)"],
+          ["num_dias_com_precipitacao", "NUMERIC(3)"]
+        ]
+      }
+    ]
+  }
+}

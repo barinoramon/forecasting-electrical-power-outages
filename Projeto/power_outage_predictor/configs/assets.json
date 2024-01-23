@@ -1,0 +1,34 @@
+{
+  "ingestion": {
+    "indicators": [
+      "CMM",
+      "CMMT",
+      "CMMTCO",
+      "CMMTIN",
+      "CMMTOU",
+      "CMMTRE",
+      "CMMTRU",
+      "DEC",
+      "DEC1",
+      "ERPTRU",
+      "ERPTUR",
+      "FEC",
+      "FEC1",
+      "NUCTCO",
+      "NUCTIN",
+      "NUCTOU",
+      "NUCTRE",
+      "NUCTRU",
+      "NUMCON",
+      "NUMCONSAGT",
+      "PNIT",
+      "PNITT",
+      "TI1",
+      "TNS",
+      "TNSA",
+      "TNST",
+      "TSC",
+      "TSCT"
+    ]
+  }
+}
